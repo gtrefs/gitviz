@@ -1,35 +1,36 @@
 #!/usr/bin/env node
 'use strict';
 
-var meow = require('meow');
-var gitviz = require('./'),
-	Watcher = require('./lib/watcher.js');
+const meow = require('meow');
+const gitviz = require('./');
+const Watcher = require('./lib/watcher.js');
 
-var cli = meow({
-	help: [
-		'Usage:',
-		'  gitviz [options] PATH',
-		'',
-		'Options:',
-		'  -w, --watch        watch the PATH for filechanges',
-		'  -h, --help         print usage information',
-		'  -v, --version      show version info and exit',
-		'',
-		'Examples:',
-		'  $ gitviz /path/to/git/project',
-	].join('\n')
-},{
-	alias: { h: 'help', v: 'version' , w: 'watch' },
-	boolean: ['watch']
+const helpText = `
+Usage
+  $ gitviz [options] PATH
+
+Options
+  -w, --watch  watch the PATH for filechanges
+
+Examples
+  $ gitviz /path/to/git/project
+`;
+
+const cli = meow(helpText, {
+  flags: {
+    watch: {
+      type: 'boolean',
+      alias: 'w'
+    }
+  }
 });
 
-var path = cli.input[0] || process.cwd();
+const path = cli.input[0] || process.cwd();
 
-if(cli.flags.watch) {
-	new Watcher(path).on('ping', function() {
-		gitviz(path);
-	});
+if (cli.flags.watch) {
+  new Watcher(path).on('ping', () => {
+    gitviz(path);
+  });
 }
 
 gitviz(path);
-

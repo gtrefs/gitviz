@@ -19,12 +19,12 @@
   "repository": "chr1shaefn3r/gitviz.git",
   "license": "MIT",
   "dependencies": {
-    "debug": "^2.2.0",
-    "git-objectids": "^0.2.0",
-    "graphviz": "0.0.8",
-    "meow": "^3.7.0",
-    "nodegit": "^0.5.0",
-    "watch": "^0.19.1"
+    "debug": "^4.3.4",
+    "git-objectids": "^0.3.0",
+    "graphviz": "0.0.9",
+    "meow": "^9.0.0",
+    "nodegit": "^0.31.0",
+    "watch": "^1.0.2"
   },
   "keywords": [
     "gitviz",
@@ -40,6 +40,6 @@
     "generate-sample-gif": "bash scripts/generate_sample_gif.bash"
   },
   "devDependencies": {
-    "npm-check-updates": "^2.6.7"
+    "npm-check-updates": "^16.14.21"
   }
 }
